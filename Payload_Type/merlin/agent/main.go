@@ -107,6 +107,25 @@ var useragent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KH
 // verbose a boolean value that determines if the Agent will print verbose output
 var verbose = "false"
 
+// Pubsub variables
+// gcpProjectID is the GCP project ID to use for the Pubsub client
+var gcpProjectID = ""
+
+// serverToAgentTopic is the topic to send messages to the agent
+var serverToAgentTopic = ""
+
+// agentToServerTopic is the topic to send messages to the server
+var agentToServerTopic = ""
+
+// serverToAgentSubscription is the subscription to receive messages from the server
+var serverToAgentSubscription = ""
+
+// agentToServerSubscription is the subscription to receive messages from the agent
+var agentToServerSubscription = ""
+
+// agentServiceAccountCredential is the service account credential to use for the pubsub client
+var agentServiceAccountCredential = ""
+
 func main() {
 	core.Verbose, _ = strconv.ParseBool(verbose)
 	core.Debug, _ = strconv.ParseBool(debug)
@@ -179,6 +198,25 @@ func main() {
 			}
 			os.Exit(1)
 		}
+
+	case "pubsub":
+		clientConfig := pubsub.Config{
+			AgentID:      a.ID(),
+			PayloadID:    payloadID,
+			GCPProjectID: gcpProjectID,
+			ServerToAgentTopic: serverToAgentTopic,
+			AgentToServerTopic: agentToServerTopic,
+			ServerToAgentSubscription: serverToAgentSubscription,
+			AgentToServerSubscription: agentToServerSubscription,
+			AgentServiceAccountCredential: agentServiceAccountCredential,
+		}
+
+		if core.verbose {
+			color.Yellow("Pubsub client not yet implemented")
+			color.Yellow("Configuration %+v", clientConfig)
+		}
+		os.Exit(1)
+
 	default:
 		if core.Verbose {
 			color.Red(fmt.Sprintf("unknown C2 profile: %s", profile))
