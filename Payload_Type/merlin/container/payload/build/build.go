@@ -549,7 +549,7 @@ func NewPayload() (structs.PayloadType, error) {
 		CanBeWrappedByTheFollowingPayloadTypes: []string{"service_wrapper", "scarecrow_wrapper"},
 		SupportsDynamicLoading:                 false,
 		Description:                            "A port of Merlin from https://www.github.com/Ne0nd0g/merlin to Mythic",
-		SupportedC2Profiles:                    []string{"http"},
+		SupportedC2Profiles:                    []string{"http", "pubsub"},
 		MythicEncryptsData:                     true,
 	}
 
