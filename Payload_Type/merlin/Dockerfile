@@ -16,6 +16,6 @@ RUN go mod download
 
 # Build the Merlin container and save in the /usr/local/bin directory because it is in the PATH environment variable
 # Do not save it in the Mythic directory because it is temporary while building and will be lost
-RUN go build -o /usr/local/bin/MerlinContainer2
+RUN go build -o /usr/local/bin/MerlinContainer
 
-CMD /usr/local/bin/MerlinContainer2
+CMD /usr/local/bin/MerlinContainer
