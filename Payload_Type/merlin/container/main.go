@@ -57,5 +57,5 @@ func main() {
 	payloadService.AddIcon(filepath.Join(".", "..", "merlin.svg"))
 
 	// Start the container
-	MythicContainer.StartAndRunForever([]MythicContainer.MythicServices{MythicContainer.MythicServicePayload})
+	MythicContainer2.StartAndRunForever([]MythicContainer2.MythicServices{MythicContainer2.MythicServicePayload})
 }
